@@ -135,12 +135,15 @@ Node Accessors
 
 .. autofunction:: bdsg.handlegraph.HandleGraph.get_handle
    :noindex:
+The graph uses handle objects because they hold both the node_id and the orientation of the node. Any node can be orientated forward or backward which signifies the direction from which the node was entered. A handle can be returned to you using just the integer ``graph.get_handle(node_id)`` or including an orientation ``graph.get_handle(node_id,False)``. The default orientation is forward (ie. ``backward=False``). 
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.get_id
    :noindex:
+This method returns the integer node id of a handle. The orientation of the node handle cannot be retrieved using just the node_id since handles can be both forward and backward.
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.get_is_reverse
    :noindex:
+This returns the orientation of the handle you pass to it - this orientation doesn't reflect the orientation relative to any walk you were doing through the graph. 
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.get_length
    :noindex:
@@ -156,9 +159,12 @@ Node Accessors
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.get_degree
    :noindex:
-   
+The boolean argument here refers to the forward or backward side of the handle passed to get_degree. It allows you to use this method to check the degree on both sides of a handle without passing a forward and reverse handle to it. 
+
+
 :class:`bdsg.handlegraph.PathHandleGraph`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Not all graphs have paths.
 
 .. autofunction:: bdsg.handlegraph.PathHandleGraph.get_step_count
    :noindex:
@@ -184,6 +190,7 @@ Node Handle Accessors
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.flip
    :noindex:
+Flip the orientation of the handle passed to the function.
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.forward
    :noindex:
@@ -206,7 +213,8 @@ Edge Accessors
    
 .. autofunction:: bdsg.handlegraph.HandleGraph.traverse_edge_handle
    :noindex:
-   
+
+
 :class:`bdsg.handlegraph.VectorizableHandleGraph`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
